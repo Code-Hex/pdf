@@ -49,6 +49,7 @@ Search:
 				num--
 			}
 		}
+		break
 	}
 	return Page{}
 }
@@ -769,7 +770,7 @@ func (x TextVertical) Less(i, j int) bool {
 	return x[i].X < x[j].X
 }
 
-// TextVertical implements sort.Interface for sorting
+// TextHorizontal implements sort.Interface for sorting
 // a slice of Text values in horizontal order, left to right,
 // and then top to bottom within a column.
 type TextHorizontal []Text
