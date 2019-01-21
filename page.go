@@ -312,6 +312,13 @@ Parse:
 								continue Parse
 							}
 							if bfrange.dst.Kind() == Array {
+								n := text[len(text)-1] - bfrange.lo[len(bfrange.lo)-1]
+								v := bfrange.dst.Index(int(n))
+								if v.Kind() == String {
+									s := v.RawString()
+									r = append(r, []rune(utf16Decode(s))...)
+									continue Parse
+								}
 								fmt.Printf("array %v\n", bfrange.dst)
 							} else {
 								fmt.Printf("unknown dst %v\n", bfrange.dst)
