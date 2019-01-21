@@ -490,11 +490,9 @@ func (p Page) GetPlainText(fonts map[string]*Font) (result string, err error) {
 
 	var textBuilder bytes.Buffer
 	showText := func(s string) {
-		for _, ch := range enc.Decode(s) {
-			_, err := textBuilder.WriteRune(ch)
-			if err != nil {
-				panic(err)
-			}
+		_, err := textBuilder.WriteString(enc.Decode(s))
+		if err != nil {
+			panic(err)
 		}
 	}
 
